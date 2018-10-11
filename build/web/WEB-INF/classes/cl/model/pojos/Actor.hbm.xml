@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/09/2018 03:38:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cl.model.pojos.Actor" table="actor" catalog="videomonito" optimistic-lock="version">
+        <id name="identificacion" type="int">
+            <column name="identificacion" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombActor" type="string">
+            <column name="nombActor" length="45" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" not-null="true" />
+        </property>
+        <set name="actorPeliculas" table="actor_pelicula" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="identificacion" not-null="true" />
+            </key>
+            <one-to-many class="cl.model.pojos.ActorPelicula" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/09/2018 03:38:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cl.model.pojos.Idioma" table="idioma" catalog="videomonito" optimistic-lock="version">
+        <id name="ididioma" type="java.lang.Integer">
+            <column name="ididioma" />
+            <generator class="identity" />
+        </id>
+        <property name="nombIdioma" type="string">
+            <column name="nombIdioma" length="45" not-null="true" />
+        </property>
+        <set name="peliculaIdiomas" table="pelicula_idioma" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ididioma" not-null="true" />
+            </key>
+            <one-to-many class="cl.model.pojos.PeliculaIdioma" />
+        </set>
+    </class>
+</hibernate-mapping>

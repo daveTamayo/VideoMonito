@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/09/2018 03:38:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cl.model.pojos.Instancia" table="instancia" catalog="videomonito" optimistic-lock="version">
+        <id name="isanInstancia" type="int">
+            <column name="isanInstancia" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombInstancia" type="string">
+            <column name="nombInstancia" length="45" not-null="true" />
+        </property>
+        <property name="titulo" type="string">
+            <column name="titulo" length="45" not-null="true" />
+        </property>
+        <property name="temporada" type="string">
+            <column name="temporada" length="10" not-null="true" />
+        </property>
+        <set name="peliculas" table="pelicula" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="isanInstancia" not-null="true" />
+            </key>
+            <one-to-many class="cl.model.pojos.Pelicula" />
+        </set>
+    </class>
+</hibernate-mapping>

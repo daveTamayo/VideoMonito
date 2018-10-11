@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/09/2018 03:38:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cl.model.pojos.PeliculaIdioma" table="pelicula_idioma" catalog="videomonito" optimistic-lock="version">
+        <id name="idpeliculaIdioma" type="java.lang.Integer">
+            <column name="idpelicula_idioma" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="idioma" class="cl.model.pojos.Idioma" fetch="select">
+            <column name="ididioma" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pelicula" class="cl.model.pojos.Pelicula" fetch="select">
+            <column name="isan" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
